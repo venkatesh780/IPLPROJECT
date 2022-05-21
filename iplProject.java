@@ -2,14 +2,21 @@
 import java.io.*;
 import java.util.*;
 public class iplProject {
+	
+	public static void fistProblem() {
+		
+	}
 
 	public static void main(String[] args) {
 		
-		 String file = "/home/venky/Desktop/IplProject/matches.csv";
+		
+		    String file = "/home/venky/Desktop/IplProject/matches.csv";
 		    BufferedReader reader = null;
 		    String line = "";
 		    Map<String,Integer> noMatchesPerYear=new HashMap<>();
+		  //  Map<String,Integer> noMatchesOwn=new HashMap<>();
 		    try {
+		    	System.out.println("**************************************");
 		        reader = new BufferedReader(new FileReader(file));
 		        while((line = reader.readLine()) != null) {
 		            String[] row = line.split(",");
@@ -19,7 +26,9 @@ public class iplProject {
 		            		   noMatchesPerYear.put(row[i],noMatchesPerYear.get(row[i])+1);
 		            	   }
 		            	   else {
-		            		   noMatchesPerYear.put(row[i], 1);
+		            		   if(row[i]!="season") {
+		            			   noMatchesPerYear.put(row[i], 1);
+		            		   }
 		            	   }
 		               }
 		            }
