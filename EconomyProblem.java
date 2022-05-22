@@ -19,6 +19,7 @@ public class EconomyProblem {
 	    int falg=0;
 	    int skip=0;
 	    int remove=0;
+	    int ignore=0;
 	    Map<String,Integer> teamConscedRuns=new HashMap<>();
 	    Map<String,Integer> bowlersRuns=new HashMap<>();
 	    Map<String,Integer> bowlersBalls=new HashMap<>();
@@ -26,6 +27,7 @@ public class EconomyProblem {
 	    List<Integer> matchIds_2015=new ArrayList<>();
 	    Map<String,Integer> noMatchesPerYear=new HashMap<>();
 	    Map<String,Integer> noMatchesOwn=new HashMap<>();
+	    Map<String,Integer> tossWins=new HashMap<>();
 	    try {
 	    	 reader = new BufferedReader(new FileReader(file));
 		        while((line = reader.readLine()) != null) {
@@ -163,7 +165,24 @@ public class EconomyProblem {
 	     System.out.println(bowlersEconomy); //4th problem output
 	   //  System.out.println("******************5th problem*****************************");
 	     
-	     
+	     reader = new BufferedReader(new FileReader(file));
+	        while((line = reader.readLine()) != null) {
+	        	if(ignore==0) {
+	        		ignore=1;
+	        		continue;
+	        	}
+	        	else {
+	        		 String[] row = line.split(",");
+			            if(tossWins.containsKey(row[6])) {
+			            	tossWins.put(row[6], tossWins.get(row[6])+1);
+			            }
+			            else {
+			            	tossWins.put(row[6], 1);
+			            }
+	        	}
+	        }
+	        
+	        System.out.println(tossWins);
 	     
 	     
 	     
